@@ -22,22 +22,24 @@ namespace Verbess.Unity.Editor
             {
                 return;
             }
-            // check file name extension, function return if it is not ".cs"
+            // check file name extension, function return if it is not ".cs".
             string fileNameExtension = filePath.Substring(fileNameExtensionindex + 1);
             if (fileNameExtension != "cs")
             {
                 return;
             }
 
-            int fileIndex = filePath.LastIndexOf("/");
+            int fileNameIndex = filePath.LastIndexOf("/");
+            string _namespace = Application.companyName + "." + Application.productName;
+            string _fileName = filePath.Substring(fileNameIndex + 1, fileNameExtensionindex - fileNameIndex - 1);
+
             int index = Application.dataPath.LastIndexOf("Assets");
             string globalFilePath = Application.dataPath.Substring(0, index) + filePath;
             string file = File.ReadAllText(globalFilePath);
-            string _namespace = Application.companyName + "." + Application.productName;
-            string _fileName = filePath.Substring(fileIndex + 1, fileNameExtensionindex - fileIndex - 1);
             file = file.Replace("#NAMESPACE#", _namespace);
             file = file.Replace("#SCRIPTNAME#", _fileName);
             File.WriteAllText(globalFilePath, file);
+
             AssetDatabase.Refresh();
         }
     }
