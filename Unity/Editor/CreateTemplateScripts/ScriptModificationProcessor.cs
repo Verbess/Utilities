@@ -17,28 +17,29 @@ namespace Verbess.Unity.Editor
             string filePath = metaFilePath.EndsWith(".meta") ? metaFilePath.Replace(".meta", "") : metaFilePath;
 
             // If file path has no file name extension, function return.
-            int fileNameExtensionindex = filePath.LastIndexOf(".");
-            if (fileNameExtensionindex < 0)
+            int fileNameExtensionIndex = filePath.LastIndexOf(".");
+            if (fileNameExtensionIndex < 0)
             {
                 return;
             }
             // check file name extension, function return if it is not ".cs".
-            string fileNameExtension = filePath.Substring(fileNameExtensionindex + 1);
+            string fileNameExtension = filePath.Substring(fileNameExtensionIndex + 1);
             if (fileNameExtension != "cs")
             {
                 return;
             }
 
             int fileNameIndex = filePath.LastIndexOf("/");
-            string _namespace = Application.companyName + "." + Application.productName;
-            string _fileName = filePath.Substring(fileNameIndex + 1, fileNameExtensionindex - fileNameIndex - 1);
+            string fileNamespace = Application.companyName + "." + Application.productName;
+            string fileScriptName = filePath.Substring(fileNameIndex + 1, fileNameExtensionIndex - fileNameIndex - 1);
 
             int index = Application.dataPath.LastIndexOf("Assets");
-            string globalFilePath = Application.dataPath.Substring(0, index) + filePath;
-            string file = File.ReadAllText(globalFilePath);
-            file = file.Replace("#NAMESPACE#", _namespace);
-            file = file.Replace("#SCRIPTNAME#", _fileName);
-            File.WriteAllText(globalFilePath, file);
+            string absoluteFilePath = Application.dataPath.Substring(0, index) + filePath;
+
+            string content = File.ReadAllText(absoluteFilePath);
+            content = content.Replace("#NAMESPACE#", fileNamespace)
+                             .Replace("#SCRIPTNAME#", fileScriptName);
+            File.WriteAllText(absoluteFilePath, content);
 
             AssetDatabase.Refresh();
         }
