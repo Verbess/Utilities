@@ -12,14 +12,18 @@ namespace Verbess.Unity.Editor
         }
 
         /// <summary>
-        /// Get the directory path of selection.
+        /// Used to create template script.
         /// </summary>
-        /// <returns>The directory path of selection.</returns>
-        private static string GetSelectionDirectoryPath()
+        /// <param name="defaultFileName">The default name when file create.</param>
+        /// <param name="templateFileName">The file name of template.</param>
+        /// <param name="fileExtension">The extension type of file, it's a Enum.</param>
+        private static void CreateScriptTemplates(string defaultFileName, string templateFileName, FileExtension fileExtension)
         {
+            // Get the directory path of selection.
+            // Only get the first selection's directory path.
+            #region GetDirectoryOfSelection
             string[] assetGUIDs = Selection.assetGUIDs;
             string path = AssetDatabase.GUIDToAssetPath(assetGUIDs[0]);
-
             if (path.Contains("."))
             {
                 string[] splitPaths = path.Split('/');
@@ -33,22 +37,10 @@ namespace Verbess.Unity.Editor
             {
                 path += "/";
             }
+            #endregion
 
-            return path;
-        }
-
-        /// <summary>
-        /// Use to create template script.
-        /// </summary>
-        /// <param name="defaultFileName">The default name when file create.</param>
-        /// <param name="templateFileName">The file name of template.</param>
-        /// <param name="fileExtension">The extension type of file, it's a Enum.</param>
-        private static void CreateScriptTemplates(string defaultFileName, string templateFileName, FileExtension fileExtension)
-        {
-            string path = GetSelectionDirectoryPath();
             string templateFilePath = Application.dataPath + $"/Editor/CreateTemplateScripts/ScriptTemplates/{templateFileName}";
             string TargetFilePath = path + defaultFileName + $".{fileExtension.ToString()}";
-
             bool IsCreated = false;
             int index = 1;
             while (!IsCreated)
