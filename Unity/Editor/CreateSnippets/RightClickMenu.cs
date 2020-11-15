@@ -39,7 +39,7 @@ namespace Verbess.Unity.Editor
             }
             #endregion
 
-            string templateFilePath = Application.dataPath + $"/Editor/CreateTemplateScripts/ScriptTemplates/{templateFileName}";
+            string templateFilePath = Application.dataPath + $"/Editor/CreateSnippets/Snippets/{templateFileName}";
             string TargetFilePath = path + defaultFileName + $".{fileExtension.ToString()}";
             bool IsCreated = false;
             int index = 1;
