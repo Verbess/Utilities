@@ -59,16 +59,16 @@ namespace Verbess.Unity.Editor
             }
         }
 
-        [MenuItem("Assets/Custom Operate/Create Snippets/C# Class - MonoBehaviour", false, 0)]
+        [MenuItem("Assets/Create/Custom Operate/Create Snippets/C# Class - MonoBehaviour", false, 0)]
         public static void CreateSnippets_MonoBehaviourCSharp() => CreateSnippets("NewBehaviourScript", "C# Script-NewBehaviourScript.cs.txt", FileExtension.cs);
 
-        [MenuItem("Assets/Custom Operate/Create Snippets/C# Class", false, 100)]
+        [MenuItem("Assets/Create/Custom Operate/Create Snippets/C# Class", false, 100)]
         public static void CreateSnippets_CSharpClass() => CreateSnippets("NewClassScript", "C# Script-NewClassScript.cs.txt", FileExtension.cs);
 
-        [MenuItem("Assets/Custom Operate/Create Snippets/C# Interface", false, 100)]
+        [MenuItem("Assets/Create/Custom Operate/Create Snippets/C# Interface", false, 100)]
         public static void CreateSnippets_CSharpInterface() => CreateSnippets("NewInterfaceScript", "C# Script-NewInterfaceScript.cs.txt", FileExtension.cs);
 
-        [MenuItem("Assets/Custom Operate/Create Snippets/C# Enum", false, 100)]
+        [MenuItem("Assets/Create/Custom Operate/Create Snippets/C# Enum", false, 100)]
         public static void CreateSnippets_CSharpEnum() => CreateSnippets("NewEnumScript", "C# Script-NewEnumScript.cs.txt", FileExtension.cs);
     }
 }

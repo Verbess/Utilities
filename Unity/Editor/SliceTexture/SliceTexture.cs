@@ -11,7 +11,7 @@ namespace Verbess.Unity.Editor
         public const string ResourcesPath = "Assets/Resources/";
 
 
-        [MenuItem("Assets/Custom Operate/Slice to PNGs", false, 900)]
+        [MenuItem("Assets/Create/Custom Operate/Slice to PNGs", false, 900)]
         public static void SliceToPNG()
         {
             foreach (Object obj in Selection.objects)
