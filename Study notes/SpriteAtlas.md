@@ -6,4 +6,4 @@
 - **SpriteAtlas** 取消勾选 Packing 中的 **Allow Rotation** 和 **Tight Packing** 两项
 
 原因可能是因为 SpriteAtlas 边缘算法的问题。  
-内容依据：[Sprifte Atlas Packing bug......](https://forum.unity.com/threads/sprifte-atlas-packing-bug.873448/)
+内容依据：[Sprite Atlas Packing bug......](https://forum.unity.com/threads/sprifte-atlas-packing-bug.873448/)
