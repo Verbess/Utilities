@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
@@ -12,7 +10,7 @@ namespace Verbess.Unity.Editor
 
 
         [MenuItem("Assets/Create/Custom Operate/Slice to PNGs", false, 900)]
-        public static void SliceToPNG()
+        public static void SliceToPNGs()
         {
             foreach (Object obj in Selection.objects)
             {
