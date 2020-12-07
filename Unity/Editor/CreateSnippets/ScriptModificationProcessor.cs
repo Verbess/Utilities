@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -30,11 +29,11 @@ namespace Verbess.Unity.Editor
             }
 
             int fileNameIndex = filePath.LastIndexOf("/");
-            string fileNamespace = Application.companyName + "." + Application.productName;
+            string fileNamespace = String.Concat(Application.companyName, ".", Application.productName);
             string fileScriptName = filePath.Substring(fileNameIndex + 1, fileExtensionIndex - fileNameIndex - 1);
 
             int index = Application.dataPath.LastIndexOf("Assets");
-            string absoluteFilePath = Application.dataPath.Substring(0, index) + filePath;
+            string absoluteFilePath = String.Concat(Application.dataPath.Substring(0, index), filePath);
 
             string content = File.ReadAllText(absoluteFilePath);
             content = content.Replace("#NAMESPACE#", fileNamespace)

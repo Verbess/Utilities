@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,23 +26,26 @@ namespace Verbess.Unity.Editor
             #region GetDirectoryOfSelection
             string[] assetGUIDs = Selection.assetGUIDs;
             string path = AssetDatabase.GUIDToAssetPath(assetGUIDs[0]);
+            StringBuilder stringBuilder = new StringBuilder(path);
             if (path.Contains("."))
             {
                 string[] splitPaths = path.Split('/');
-                path = "";
+                stringBuilder.Clear();
                 for (int i = 0; i < splitPaths.Length - 1; i++)
                 {
-                    path += splitPaths[i] + "/";
+                    stringBuilder.Append(splitPaths[i]);
+                    stringBuilder.Append("/");
                 }
             }
             else
             {
-                path += "/";
+                stringBuilder.Append("/");
             }
+            path = stringBuilder.ToString();
             #endregion
 
-            string templateFilePath = Application.dataPath + $"/Editor/CreateSnippets/Snippets/{templateFileName}";
-            string TargetFilePath = path + defaultFileName + $".{fileExtension.ToString()}";
+            string templateFilePath = String.Concat(Application.dataPath, $"/Editor/CreateSnippets/Snippets/{templateFileName}");
+            string TargetFilePath = String.Concat(path, defaultFileName, $".{fileExtension.ToString()}");
             bool IsCreated = false;
             int index = 1;
             while (!IsCreated)
@@ -53,7 +58,7 @@ namespace Verbess.Unity.Editor
                 }
                 else
                 {
-                    TargetFilePath = path + defaultFileName + $"{index}.{fileExtension.ToString()}";
+                    TargetFilePath = String.Concat(path, defaultFileName, $"{index}.{fileExtension.ToString()}");
                     index++;
                 }
             }
