@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
@@ -12,7 +13,7 @@ namespace Verbess.Unity.Editor
         [MenuItem("Assets/Create/Custom Operate/Slice to PNGs", false, 900)]
         public static void SliceToPNGs()
         {
-            foreach (Object obj in Selection.objects)
+            foreach (UnityEngine.Object obj in Selection.objects)
             {
                 string selectionPath = AssetDatabase.GetAssetPath(obj);
 
@@ -80,7 +81,7 @@ namespace Verbess.Unity.Editor
                     texture2D.SetPixels(colors);
                     texture2D.Apply();
 
-                    string writePath = Path.Combine(outputPath, sprite.name) + extensionForWrite;
+                    string writePath = String.Concat(Path.Combine(outputPath, sprite.name), extensionForWrite);
                     byte[] content = null;
                     switch (extensionForWrite.ToLower())
                     {
