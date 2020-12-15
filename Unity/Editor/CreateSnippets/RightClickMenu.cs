@@ -70,6 +70,9 @@ namespace Verbess.Unity.Editor
         [MenuItem("Assets/Create/Custom Operate/Create Snippets/C# Class", false, 100)]
         public static void CreateSnippets_CSharpClass() => CreateSnippets("NewClassScript", "C# Script-NewClassScript.cs.txt", FileExtension.cs);
 
+        [MenuItem("Assets/Create/Custom Operate/Create Snippets/C# Struct", false, 100)]
+        public static void CreateSnippets_CSharpStruct() => CreateSnippets("NewClassScript", "C# Script-NewStructScript.cs.txt", FileExtension.cs);
+
         [MenuItem("Assets/Create/Custom Operate/Create Snippets/C# Interface", false, 100)]
         public static void CreateSnippets_CSharpInterface() => CreateSnippets("NewInterfaceScript", "C# Script-NewInterfaceScript.cs.txt", FileExtension.cs);
 
