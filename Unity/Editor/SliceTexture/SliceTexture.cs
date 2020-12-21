@@ -7,8 +7,12 @@ namespace Verbess.Unity.Editor
 {
     public static class SliceTexture
     {
-        public const string ResourcesPath = "Assets/Resources/";
+        private static readonly string resourcesPath = "Assets/Resources/";
 
+        public static string ResourcesPath
+        {
+            get => resourcesPath;
+        }
 
         [MenuItem("Assets/Create/Custom Operate/Slice to PNGs", false, 900)]
         public static void SliceToPNGs()
@@ -27,7 +31,7 @@ namespace Verbess.Unity.Editor
                         switch (selectionExtension)
                         {
                             case "":
-                                Debug.Log($"The selection: \"{selectionPath}\" is not a file.");
+                                Debug.LogError($"The selection: \"{selectionPath}\" is not a file.");
                                 continue;
                             case ".png":
                                 SliceTexture.Slice(loadPath, ".png");
@@ -36,18 +40,18 @@ namespace Verbess.Unity.Editor
                                 SliceTexture.Slice(loadPath, ".jpg");
                                 break;
                             default:
-                                Debug.Log($"The selection: \"{selectionPath}\"'s extension is not supported. This method currently supports only the following file formats: [.png .jpg]");
+                                Debug.LogError($"The selection: \"{selectionPath}\"'s extension is not supported. This method currently supports only the following file formats: [.png .jpg]");
                                 continue;
                         }
                     }
                     catch (System.Exception exception)
                     {
-                        Debug.Log(exception.ToString());
+                        Debug.LogException(exception);
                     }
                 }
                 else
                 {
-                    Debug.Log($"(\"{selectionPath}\") is not in the correct path, Put it under the Resources folder(\"{ResourcesPath}\").");
+                    Debug.LogError($"(\"{selectionPath}\") is not in the correct path, Put it under the Resources folder(\"{ResourcesPath}\").");
                     continue;
                 }
             }
@@ -69,7 +73,7 @@ namespace Verbess.Unity.Editor
                 }
                 catch (System.Exception exception)
                 {
-                    Debug.Log(exception.ToString());
+                    Debug.LogException(exception);
                     throw;
                 }
 
@@ -98,7 +102,7 @@ namespace Verbess.Unity.Editor
                     }
                     catch (System.Exception exception)
                     {
-                        Debug.Log(exception.ToString());
+                        Debug.LogException(exception);
                         throw;
                     }
                     Debug.Log($"Sprite: {sprite.name} write succeeded! Process: {i}/{sprites.Length}.");
