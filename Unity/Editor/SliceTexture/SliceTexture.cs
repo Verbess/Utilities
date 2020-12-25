@@ -44,9 +44,9 @@ namespace Verbess.Unity.Editor
                                 continue;
                         }
                     }
-                    catch (System.Exception exception)
+                    catch (Exception e)
                     {
-                        Debug.LogException(exception);
+                        Debug.LogException(e);
                     }
                 }
                 else
@@ -71,9 +71,9 @@ namespace Verbess.Unity.Editor
                         Directory.CreateDirectory(outputPath);
                     }
                 }
-                catch (System.Exception exception)
+                catch (Exception e)
                 {
-                    Debug.LogException(exception);
+                    Debug.LogException(e);
                     throw;
                 }
 
@@ -100,9 +100,9 @@ namespace Verbess.Unity.Editor
                     {
                         File.WriteAllBytes(writePath, content);
                     }
-                    catch (System.Exception exception)
+                    catch (Exception e)
                     {
-                        Debug.LogException(exception);
+                        Debug.LogException(e);
                         throw;
                     }
                     Debug.Log($"Sprite: {sprite.name} write succeeded! Process: {i}/{sprites.Length}.");
