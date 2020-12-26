@@ -1,8 +1,8 @@
-# Utilities
+# Utils
 
 This repository includes some useful utils wrote by [me](https://github.com/Verbess).
 
-Just Feel free to use my it.
+Feel free to use it.
 
 ## Catalog
 - **gitignore**: *for git ignore files*
