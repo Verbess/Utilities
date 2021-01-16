@@ -2,6 +2,7 @@
 This repository includes some useful utils wrote by [`me`](https://github.com/Verbess).
 
 ## Catalog
+For those that are not complete enough to form a repository are provided in this repository.
 - **gitignore**: *for git ignore files*
 - **Unity**
   - **Editor**: *for Unity Editor extension*
@@ -13,4 +14,9 @@ This repository includes some useful utils wrote by [`me`](https://github.com/Ve
   - [Outer-Heaven-Theme](https://github.com/Verbess/Outer-Heaven-Theme): *theme for VSCode*
   - [Unity-VSCode-Extension-Pack](https://github.com/Verbess/Unity-VSCode-Extension-Pack): *extension pack for Unity Dev with vscode*
 - **C# Class Library**: *for C# develop*
-  - [Condition](https://github.com/Verbess/Condition): *helps developers write pre- and postcondition validations in a fluent manner*
+  - [Conditions](https://github.com/Verbess/Conditions): *helps developers write pre- and postcondition validations in a fluent manner*
+
+## Usage
+- **Unity Develop**: *for Unity develop*
+  - **Catalog - Unity**
+  - **Repositories - C# Class Library - Conditions**
