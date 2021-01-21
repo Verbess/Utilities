@@ -71,7 +71,7 @@ namespace Verbess.Utils.Singleton
             }
             else
             {
-                instance = UnityEngine.Object.FindObjectOfType<T>();
+                instance = FindObjectOfType<T>();
                 if (instance != null)
                 {
                     return instance;
