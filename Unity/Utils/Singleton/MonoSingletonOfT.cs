@@ -21,13 +21,22 @@ namespace Verbess.Utils.Singleton
                 }
                 return instance;
             }
-            protected set => instance = value;
+            protected set
+            {
+                instance = value;
+            }
         }
 
         public static bool IsShuttingDown
         {
-            get => isShuttingDown;
-            protected set => isShuttingDown = value;
+            get
+            {
+                return isShuttingDown;
+            }
+            protected set
+            {
+                isShuttingDown = value;
+            }
         }
 
         public virtual void Initialize() { }
@@ -55,6 +64,7 @@ namespace Verbess.Utils.Singleton
         private static T CreateMonoSingletonInstance()
         {
             T instance = null;
+
             if (!Application.isPlaying)
             {
                 return instance;
@@ -70,6 +80,7 @@ namespace Verbess.Utils.Singleton
                 {
                     GameObject gameObject = new GameObject(typeof(T).Name);
                     instance = gameObject.AddComponent<T>();
+
                     return instance;
                 }
             }

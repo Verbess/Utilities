@@ -24,7 +24,10 @@ namespace Verbess.Utils.Singleton
                 }
                 return instance;
             }
-            protected set => instance = value;
+            protected set
+            {
+                instance = value;
+            }
         }
 
         static Singleton()
@@ -45,8 +48,11 @@ namespace Verbess.Utils.Singleton
         private static T CreateSingletonInstance()
         {
             Type type = typeof(T);
+
             ConstructorInfo[] constructorInfos = type.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);
+
             ConstructorInfo constructorInfo = Array.Find<ConstructorInfo>(constructorInfos, a => a.GetParameters().Length == 0);
+
             if (constructorInfo == null)
             {
                 throw new Exception($"There is no Non-Public Non-Parameters Constructor in {type}");
