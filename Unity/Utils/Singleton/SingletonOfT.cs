@@ -1,9 +1,6 @@
-using System;
-using System.Reflection;
-
 namespace Verbess.Utils.Singleton
 {
-    public abstract class Singleton<T> : ISingletonInit where T : Singleton<T>
+    public abstract class Singleton<T> : ISingleton where T : Singleton<T>
     {
         private static T instance;
         private static readonly object synclock;
@@ -18,15 +15,11 @@ namespace Verbess.Utils.Singleton
                     {
                         if (instance == null)
                         {
-                            instance = CreateSingletonInstance();
+                            instance = SingletonCreator.CreateSingleton<T>();
                         }
                     }
                 }
                 return instance;
-            }
-            protected set
-            {
-                instance = value;
             }
         }
 
@@ -43,26 +36,6 @@ namespace Verbess.Utils.Singleton
         public virtual void Dispose()
         {
             instance = null;
-        }
-
-        private static T CreateSingletonInstance()
-        {
-            Type type = typeof(T);
-
-            ConstructorInfo[] constructorInfos = type.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);
-
-            ConstructorInfo constructorInfo = Array.Find<ConstructorInfo>(constructorInfos, a => a.GetParameters().Length == 0);
-
-            if (constructorInfo == null)
-            {
-                throw new Exception($"There is no Non-Public Non-Parameters Constructor in {type}");
-            }
-            else
-            {
-                object instance = constructorInfo.Invoke(null);
-                T t = instance as T;
-                return t;
-            }
         }
     }
 }

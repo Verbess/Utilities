@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Verbess.Utils.Singleton
 {
-    public abstract class MonoSingleton<T> : MonoBehaviour, ISingletonInit where T : MonoSingleton<T>
+    public abstract class MonoSingleton<T> : MonoBehaviour, ISingleton where T : MonoSingleton<T>
     {
         private static T instance;
         private static bool isShuttingDown = false;
@@ -16,14 +16,10 @@ namespace Verbess.Utils.Singleton
                 {
                     if ((instance == null) && !isShuttingDown)
                     {
-                        instance = CreateMonoSingletonInstance();
+                        instance = MonoSingletonCreator.CreateMonoSingleton<T>();
                     }
                 }
                 return instance;
-            }
-            protected set
-            {
-                instance = value;
             }
         }
 
@@ -59,31 +55,6 @@ namespace Verbess.Utils.Singleton
         protected virtual void OnDestroy()
         {
             instance = null;
-        }
-
-        private static T CreateMonoSingletonInstance()
-        {
-            T instance = null;
-
-            if (!Application.isPlaying)
-            {
-                return instance;
-            }
-            else
-            {
-                instance = FindObjectOfType<T>();
-                if (instance != null)
-                {
-                    return instance;
-                }
-                else
-                {
-                    GameObject gameObject = new GameObject(typeof(T).Name);
-                    instance = gameObject.AddComponent<T>();
-
-                    return instance;
-                }
-            }
         }
     }
 }

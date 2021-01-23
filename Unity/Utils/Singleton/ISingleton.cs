@@ -1,6 +1,6 @@
 namespace Verbess.Utils.Singleton
 {
-    public interface ISingletonInit
+    public interface ISingleton
     {
         void Initialize();
     }
