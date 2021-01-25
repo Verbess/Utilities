@@ -5,7 +5,7 @@ namespace Verbess.Utils.Singleton
 {
     internal static class SingletonCreator
     {
-        internal static T CreateSingleton<T>() where T : class, ISingleton
+        public static T CreateSingleton<T>() where T : class, ISingleton
         {
             Type type = typeof(T);
             ConstructorInfo[] ctorInfos = type.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);

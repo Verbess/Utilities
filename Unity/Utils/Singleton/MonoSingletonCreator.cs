@@ -4,7 +4,7 @@ namespace Verbess.Utils.Singleton
 {
     internal static class MonoSingletonCreator
     {
-        internal static T CreateMonoSingleton<T>() where T : MonoBehaviour, ISingleton
+        public static T CreateMonoSingleton<T>() where T : MonoBehaviour, ISingleton
         {
             T instance = default(T);
 
