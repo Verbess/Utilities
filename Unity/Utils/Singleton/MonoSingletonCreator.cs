@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Verbess.Utils.Singleton
 {
-    public static class MonoSingletonCreator
+    internal static class MonoSingletonCreator
     {
-        public static T CreateMonoSingleton<T>() where T : MonoBehaviour, ISingleton
+        internal static T CreateMonoSingleton<T>() where T : MonoBehaviour, ISingleton
         {
             T instance = default(T);
 

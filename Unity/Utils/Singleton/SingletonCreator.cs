@@ -3,13 +3,13 @@ using System.Reflection;
 
 namespace Verbess.Utils.Singleton
 {
-    public static class SingletonCreator
+    internal static class SingletonCreator
     {
-        public static T CreateSingleton<T>() where T : class, ISingleton
+        internal static T CreateSingleton<T>() where T : class, ISingleton
         {
             Type type = typeof(T);
             ConstructorInfo[] ctorInfos = type.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);
-            ConstructorInfo ctorInfo = Array.Find<ConstructorInfo>(ctorInfos, a => a.GetParameters().Length == 0);
+            ConstructorInfo ctorInfo = Array.Find<ConstructorInfo>(ctorInfos, c => c.GetParameters().Length == 0);
 
             if (ctorInfo == null)
             {
