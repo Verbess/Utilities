@@ -25,7 +25,7 @@ namespace Verbess.Utils.Singleton
 
         static Singleton()
         {
-            instance = default(T);
+            instance = null;
             synclock = new object();
         }
 

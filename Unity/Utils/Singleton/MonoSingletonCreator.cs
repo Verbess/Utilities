@@ -6,7 +6,7 @@ namespace Verbess.Utils.Singleton
     {
         public static T CreateMonoSingleton<T>() where T : MonoBehaviour, ISingleton
         {
-            T instance = default(T);
+            T instance = null;
 
             if (!Application.isPlaying)
             {
