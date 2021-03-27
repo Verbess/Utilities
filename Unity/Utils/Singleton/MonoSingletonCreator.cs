@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Verbess.Utils.Singleton
+namespace Utils.Singleton
 {
     internal static class MonoSingletonCreator
     {
@@ -15,17 +15,14 @@ namespace Verbess.Utils.Singleton
             else
             {
                 instance = Object.FindObjectOfType<T>();
-                if (instance != null)
-                {
-                    return instance;
-                }
-                else
-                {
-                    GameObject gameObject = new GameObject(typeof(T).Name);
-                    instance = gameObject.AddComponent<T>();
 
-                    return instance;
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent<T>();
                 }
+
+                return instance;
             }
         }
     }

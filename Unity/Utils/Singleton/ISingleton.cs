@@ -1,4 +1,4 @@
-namespace Verbess.Utils.Singleton
+namespace Utils.Singleton
 {
     public interface ISingleton
     {

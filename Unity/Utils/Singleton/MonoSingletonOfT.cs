@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace Verbess.Utils.Singleton
+namespace Utils.Singleton
 {
     public abstract class MonoSingleton<T> : MonoBehaviour, ISingleton where T : MonoSingleton<T>
     {
         private static T instance;
-        private static bool isShuttingDown = false;
+        private static bool isApplicationQuit = false;
         private static readonly object synclock = new object();
 
         public static T Instance
@@ -14,7 +14,7 @@ namespace Verbess.Utils.Singleton
             {
                 lock (synclock)
                 {
-                    if ((instance == null) && !isShuttingDown)
+                    if ((instance == null) && !isApplicationQuit)
                     {
                         instance = MonoSingletonCreator.CreateMonoSingleton<T>();
                     }
@@ -23,15 +23,15 @@ namespace Verbess.Utils.Singleton
             }
         }
 
-        public static bool IsShuttingDown
+        public static bool IsApplicationQuit
         {
             get
             {
-                return isShuttingDown;
+                return isApplicationQuit;
             }
             protected set
             {
-                isShuttingDown = value;
+                isApplicationQuit = value;
             }
         }
 
@@ -44,7 +44,8 @@ namespace Verbess.Utils.Singleton
 
         protected virtual void OnApplicationQuit()
         {
-            isShuttingDown = true;
+            isApplicationQuit = true;
+
             if (instance != null)
             {
                 Destroy(instance.gameObject);

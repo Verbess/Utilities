@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Verbess.Utils.Singleton
+namespace Utils.Singleton
 {
     internal static class SingletonCreator
     {
@@ -13,13 +13,15 @@ namespace Verbess.Utils.Singleton
 
             if (ctorInfo == null)
             {
-                string message = String.Format("There is no Non-Public with Non-Parameters Constructors in {0}", type);
+                string message = String.Format("Non-Public Constructor() not found in {0}!", type);
+
                 throw new Exception(message);
             }
             else
             {
                 object obj = ctorInfo.Invoke(null);
                 T instance = obj as T;
+
                 return instance;
             }
         }
