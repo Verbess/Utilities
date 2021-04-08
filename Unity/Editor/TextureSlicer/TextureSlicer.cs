@@ -5,11 +5,11 @@ using UnityEditor;
 
 namespace Verbess.Utils.Editor
 {
-    public static class TextureSlicer
+    internal static class TextureSlicer
     {
         private const string ResourcesPath = "Assets/Resources/";
 
-        [MenuItem("Assets/Create/Custom Operate/Slice To Textures", false, 10)]
+        [MenuItem("Assets/Create/Custom Operate/Slice To Textures", false, 100)]
         public static void SliceToTextures()
         {
             foreach (UnityEngine.Object obj in Selection.objects)
