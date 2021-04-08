@@ -1,5 +1,5 @@
 # Utils
-This repository includes some useful utils wrote by [`me`](https://github.com/Verbess).
+This repository includes some utils wrote by [`me`](https://github.com/Verbess).
 
 ## Catalog
 For those that are not complete enough to form a repository are provided in this repository.
@@ -7,7 +7,7 @@ For those that are not complete enough to form a repository are provided in this
 - **Unity**
   - **Editor**: *for Unity Editor extension*
     - **CreateTemplateScripts**: *to create template scripts quickly*
-    - **SliceTexture**: *to slice a texture to multiple image files*
+    - **TextureSlicer**: *to slice a texture to multiple image files*
   - **Utils**: *for Unity utils*
     - **Singleton**: *generic singleton for Unity*
 
@@ -16,9 +16,9 @@ For those that are not complete enough to form a repository are provided in this
   - [Outer-Heaven-Theme](https://github.com/Verbess/Outer-Heaven-Theme): *theme for VSCode*
   - [Unity-VSCode-Extension-Pack](https://github.com/Verbess/Unity-VSCode-Extension-Pack): *extension pack for Unity Dev with vscode*
 - **C# Class Library**: *for C# develop*
-  - [Conditions](https://github.com/Verbess/Conditions): *helps developers write pre- and post- condition validations in a fluent manner*
+  - [Conditions](https://github.com/Verbess/Conditions): *helps developers write condition validations in a fluent manner*
 
 ## Usage
 - **Unity Develop**: *for Unity develop*
-  - **Catalog - Unity**
-  - **Repositories - C# Class Library - Conditions**
+  - Catalog - Unity
+  - Repositories - C# Class Library - Conditions
